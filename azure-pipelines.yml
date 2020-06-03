@@ -42,6 +42,7 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud connection 1'
@@ -53,7 +54,7 @@ steps:
     extraProperties: |
       sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/TestResults/Coverage/coverage.opencover.xml
       sonar.exclusions=**/wwwroot/lib/**/*
-    condition: |
+  condition: |
       and 
       (
         succeeded(),
